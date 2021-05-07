@@ -10,7 +10,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 @CucumberOptions(features = "src/test/resources/features/CerrarSesionLibreriaNacional.feature",
 glue = "stepsDefinitions",
 snippets = SnippetType.CAMELCASE,
-tags = "@regression")
+        format = {"json:target/cucumber.json"})
 public class CerrarSesionLibreriaNacionalRunner {
 
 }

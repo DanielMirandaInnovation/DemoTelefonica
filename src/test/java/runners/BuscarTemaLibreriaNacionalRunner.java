@@ -10,7 +10,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 @CucumberOptions(features = "src/test/resources/features/BuscarTemaLibreriaNacional.feature",
 glue = "stepsDefinitions",
 snippets = SnippetType.CAMELCASE,
-tags = "@smokeTest")
+format = {"json:target/cucumber.json"})
 public class BuscarTemaLibreriaNacionalRunner {
 
 }
