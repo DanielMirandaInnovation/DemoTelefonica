@@ -10,4 +10,6 @@ public class IniciarSesionUserInterface {
 	public static final Target TXT_CONTRASENA = Target.the("").locatedBy("//input[@name='contrasena']");
 	public static final Target BTN_INGRESA_SESION = Target.the("").locatedBy("//button");
 	public static final Target TXT_VALIDACION = Target.the("").locatedBy("//div[contains(text(),'{0}')]");
+	public static final Target EMERGENT_WINDOW = Target.the("").locatedBy("//img[@_ngcontent-c18]");
+	public static final Target EMERGENT_WINDOW_CLOSE_BUTTON = Target.the("").locatedBy("//i[@_ngcontent-c18]");
 }

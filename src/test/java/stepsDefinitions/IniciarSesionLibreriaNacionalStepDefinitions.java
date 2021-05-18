@@ -3,6 +3,7 @@ package stepsDefinitions;
 import java.io.IOException;
 import java.util.List;
 
+import net.serenitybdd.screenplay.actions.Click;
 import org.hamcrest.Matchers;
 
 import cucumber.api.java.Before;
@@ -17,6 +18,7 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
 import net.serenitybdd.screenplay.questions.WebElementQuestion;
+import questions.Condition;
 import questions.ValidarExistenciaElemento;
 import tasks.IniciarSesionLibreriaNacional;
 import uis.InformacionPersonalUserInterface;
@@ -27,13 +29,18 @@ public class IniciarSesionLibreriaNacionalStepDefinitions {
 	@Before
     public void before() throws IOException {
         OnStage.setTheStage(new OnlineCast());
+
     }
 	
 	@Dado("^que me encuentro en la pagina de la libreria nacional$")
 	public void queMeEncuentroEnLaPaginaDeLaLibreriaNacional() {
-		OnStage.theActorCalled("Duvan").can(BrowseTheWeb.with(DriverRemoteBrowser.chromeHisBrowserWeb().on("https://librerianacional.com/")));
-	}
 
+		OnStage.theActorCalled("Duvan").can(BrowseTheWeb.with(DriverRemoteBrowser.chromeHisBrowserWeb().on("https://librerianacional.com/")));
+		if (Condition.conditionVisible(OnStage.theActorInTheSpotlight(), IniciarSesionUserInterface.EMERGENT_WINDOW)) {
+			OnStage.theActorInTheSpotlight().attemptsTo(Click.on(IniciarSesionUserInterface.EMERGENT_WINDOW_CLOSE_BUTTON));
+
+		}
+	}
 
 	@Cuando("^realizo el logueo en la pagina con las credenciales$")
 	public void realizoElLogueoEnLaPaginaConLasCredenciales(List<Usuario> datosUsuario) {
